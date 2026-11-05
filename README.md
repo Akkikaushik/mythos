@@ -19,6 +19,8 @@ The current build runs **fully locally with no external accounts**:
 
 Requirements: Node.js 18.18+ (tested on Node 24) and npm.
 
+Full step-by-step guide with troubleshooting: [docs/RUN_LOCALLY.md](docs/RUN_LOCALLY.md).
+
 ```bash
 npm install
 npm run dev
