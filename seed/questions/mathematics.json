@@ -1,0 +1,11 @@
+[
+  {"c":"mathematics","d":"easy","q":"What is 12 × 12?","a":"144","w":["124","132","156"],"e":"12 × 12 = 144, also called a gross.","t":null},
+  {"c":"mathematics","d":"easy","q":"What is the value of π rounded to two decimal places?","a":"3.14","w":["3.41","3.16","3.12"],"e":"π ≈ 3.14159…, which rounds to 3.14.","t":null},
+  {"c":"mathematics","d":"easy","q":"What is 15% of 200?","a":"30","w":["15","20","35"],"e":"0.15 × 200 = 30.","t":null},
+  {"c":"mathematics","d":"medium","q":"What is the square root of 169?","a":"13","w":["12","14","17"],"e":"13 × 13 = 169.","t":null},
+  {"c":"mathematics","d":"medium","q":"What is the sum of the interior angles of a triangle in Euclidean geometry?","a":"180°","w":["90°","360°","270°"],"e":"In Euclidean geometry the interior angles of any triangle add up to 180°.","t":null},
+  {"c":"mathematics","d":"medium","q":"What is the smallest prime number greater than 13?","a":"17","w":["15","19","14"],"e":"14, 15 and 16 are composite; 17 is prime.","t":null},
+  {"c":"mathematics","d":"hard","q":"What is 7! (7 factorial)?","a":"5040","w":["720","40320","2520"],"e":"7! = 7 × 6 × 5 × 4 × 3 × 2 × 1 = 5040.","t":null},
+  {"c":"mathematics","d":"hard","q":"What is the derivative of sin(x) with respect to x?","a":"cos(x)","w":["−cos(x)","−sin(x)","tan(x)"],"e":"d/dx sin(x) = cos(x).","t":null},
+  {"c":"mathematics","d":"hard","q":"How many diagonals does a convex hexagon have?","a":"9","w":["6","12","15"],"e":"An n-sided polygon has n(n−3)/2 diagonals: 6 × 3 / 2 = 9.","t":null}
+]

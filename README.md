@@ -59,8 +59,11 @@ Bots are a testing tool. They are separate HTTP + WebSocket clients with no acce
 | `npm run build` | Typecheck + production frontend build to `dist/` |
 | `npm run lint` / `npm run typecheck` | ESLint / TypeScript |
 | `npm test` | All automated tests (unit + multiplayer integration + Supabase RLS) |
-| `npm run check` | lint + typecheck + test + build |
-| `npm run seed:supabase` | Regenerate `supabase/seed.sql` from `seed/questions.json` |
+| `npm run check` | lint + typecheck + question bank check + test + build |
+| `npm run questions:check` | Validate every seed file, list duplicates, show counts per category and difficulty |
+| `npm run questions:generate` | Regenerate `seed/generated/` from `seed/data/` and the maths templates |
+| `npm run questions:import -- --csv FILE --out seed/imported/NAME.json` | Import a CSV question pack (or `--opentdb FILE`) |
+| `npm run seed:supabase` | Regenerate `supabase/seed.sql` from all seed files |
 | `npm run bots -- CODE [n] [url]` | Join `n` bot clients to room `CODE` |
 
 ## How it works
@@ -98,26 +101,48 @@ Browser (React)  ──HTTP──►  /api/*   auth, profiles, rooms, matchmakin
 shared/            pure game rules + wire protocol types (server & client)
 server/db/         schema.sql (local Postgres schema, mirrors Supabase)
 server/src/        app.ts (HTTP+WS), game/engine.ts (match engine), repo.ts, auth.ts, seed.ts
-seed/              questions.json - question bank (single source for local + Supabase seed)
+seed/              question bank (single source for local + Supabase seed)
+  questions/       hand-written questions, one file per category
+  generated/       built by `questions:generate` - do not edit by hand
+  imported/        created by `questions:import`
+  data/            datasets used by the generator (countries, elements)
 src/               React app: pages/, pages/room/ (lobby, arena, results), components/, lib/api/
 supabase/          migrations/ (schema + RLS), seed.sql (generated)
-tests/             multiplayer integration tests, Supabase RLS tests
-scripts/           bot players, Supabase seed generator
+tests/             multiplayer, question bank (generator, importer, picker) and Supabase RLS tests
+scripts/           bot players, question generator/importer/checker, Supabase seed generator
 docs/DEPLOYMENT.md cloud deployment guide (Supabase + Vercel) and remaining work
 ```
 
 ## Question bank
 
-109 original questions across 13 categories (8–9 each, all three difficulties):
+1,265 questions across 13 categories, all with three difficulty levels:
 Indian Mythology, World Mythology, General Knowledge, Science, Technology, History, Geography,
 Sports, Movies & Entertainment, Anime, Literature, Politics & Current Affairs, and Mathematics.
-"Mixed Knowledge" draws from all of them. Mythology questions name their tradition and source text (for example,
-`Hindu (Mahabharata)` or `Norse`). Current-affairs questions carry an `asOf` date so they can be reviewed
-and retired. To add questions, edit `seed/questions.json`. The server inserts new ones on the next start, and
-`npm run seed:supabase` regenerates the cloud seed.
+"Mixed Knowledge" draws from all of them.
 
-When a host picks a narrow pool (for example, one category on Hard) with fewer questions than requested,
-the battle is topped up from other difficulties first, then other categories.
+- **109 hand-written questions** in `seed/questions/`. Mythology questions name their tradition and source text
+  (for example, `Hindu (Mahabharata)` or `Norse`). Current-affairs questions carry an `asOf` date so they can be
+  reviewed and retired.
+- **1,156 generated questions** in `seed/generated/`: capitals, continents and currencies (geography), element
+  symbols and atomic numbers (science), and arithmetic, percentages, powers, equations, HCF/LCM and primes
+  (mathematics). Answers come from `seed/data/` or are computed, and tests recheck every one independently.
+- **Imported packs** in `seed/imported/`, from CSV files or Open Trivia DB exports.
+
+The server loads all three folders on start and only reseeds when a file has changed. Edited questions are
+updated in place. See [docs/RUN_LOCALLY.md](docs/RUN_LOCALLY.md#6-adding-questions) for how to add questions.
+
+Battles spread their questions evenly across the chosen categories, so a large category such as Geography can't
+crowd out the others in Mixed. When a host picks a narrow pool (for example, one category on Hard) with fewer
+questions than requested, the battle is topped up with the same categories at other difficulties first, then
+other categories.
+
+## Credits
+
+Questions in `seed/imported/` whose `src` is `Open Trivia DB (CC BY-SA 4.0)` come from
+[Open Trivia DB](https://opentdb.com/) and are licensed under
+[CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). They keep that licence, including when
+modified, and the attribution is stored with each question (`questions.source`). All other questions are original
+to MYTHOS.
 
 ## Security notes
 

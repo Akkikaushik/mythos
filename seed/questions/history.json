@@ -1,0 +1,10 @@
+[
+  {"c":"history","d":"easy","q":"In which year did World War II end?","a":"1945","w":["1944","1946","1939"],"e":"The war ended in 1945: in Europe in May and in Asia with Japan's surrender in August/September.","t":null},
+  {"c":"history","d":"easy","q":"Who was the first President of the United States?","a":"George Washington","w":["Thomas Jefferson","Abraham Lincoln","John Adams"],"e":"George Washington served as the first President from 1789 to 1797.","t":null},
+  {"c":"history","d":"easy","q":"In which year did India gain independence from British rule?","a":"1947","w":["1950","1942","1857"],"e":"India became independent on 15 August 1947. It became a republic in 1950.","t":null},
+  {"c":"history","d":"medium","q":"Which civilisation built the citadel of Machu Picchu?","a":"Inca","w":["Aztec","Maya","Olmec"],"e":"Machu Picchu was built by the Inca in the 15th century in the Andes of present-day Peru.","t":null},
+  {"c":"history","d":"medium","q":"Who founded the Maurya Empire in ancient India?","a":"Chandragupta Maurya","w":["Ashoka","Bindusara","Bimbisara"],"e":"Chandragupta Maurya founded the empire around 322 BCE; Ashoka was his grandson.","t":null},
+  {"c":"history","d":"medium","q":"In which year did the Berlin Wall fall?","a":"1989","w":["1991","1987","1961"],"e":"The Berlin Wall was opened on 9 November 1989. It had been built in 1961.","t":null},
+  {"c":"history","d":"hard","q":"The Battle of Plassey (1757) was fought between the British East India Company and which ruler?","a":"Siraj ud-Daulah","w":["Tipu Sultan","Mir Jafar","Shah Alam II"],"e":"Robert Clive's forces defeated Siraj ud-Daulah, the Nawab of Bengal, aided by the defection of Mir Jafar.","t":null},
+  {"c":"history","d":"hard","q":"Which treaty, signed in 1919, formally ended World War I between the Allied Powers and Germany?","a":"Treaty of Versailles","w":["Treaty of Westphalia","Treaty of Tordesillas","Treaty of Utrecht"],"e":"The Treaty of Versailles was signed on 28 June 1919. Westphalia (1648) ended the Thirty Years' War.","t":null}
+]

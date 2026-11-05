@@ -59,7 +59,11 @@ mythos/
 │     ├─ db.ts           PGlite setup and seed loading
 │     ├─ rateLimit.ts    Request throttling
 │     └─ config.ts       Ports, timings, limits
-├─ seed/questions.json   109 seed questions
+├─ seed/                 Question bank (1,265 questions)
+│  ├─ questions/         Hand-written, one file per category
+│  ├─ generated/         Built by `npm run questions:generate`
+│  ├─ imported/          Created by `npm run questions:import`
+│  └─ data/              Countries and elements datasets for the generator
 ├─ supabase/             Cloud schema with Row Level Security (future path)
 ├─ tests/                Multiplayer and Supabase security tests
 └─ scripts/              Bot players, Supabase seed generator
@@ -266,7 +270,8 @@ erDiagram
 | `credentials` | Password hash (local only; Supabase Auth replaces it in the cloud) |
 | `rooms` | Code, name, public/private, settings, status |
 | `room_players` | Who is in which room; `left_at` for leavers |
-| `questions` | Question bank: category, difficulty, options, correct index, explanation, tradition, `valid_as_of` |
+| `questions` | Question bank: category, difficulty, options, correct index, explanation, tradition, `valid_as_of`, `source` (credit for imported questions) |
+| `seed_state` | Fingerprint of the seed files last loaded, so unchanged files aren't reseeded |
 | `matches` | One row per battle |
 | `match_questions` | Questions in a match with their shuffled option order and correct index |
 | `answers` | Every submitted answer with time taken and points |
@@ -304,12 +309,19 @@ room status and match phase it receives from the server.
 
 ## 13. Testing
 
-`npm test` runs 33 Vitest tests:
+`npm test` runs 59 Vitest tests:
 
 - **`shared/rules.test.ts`:** scoring, streaks, XP, levels, room codes, validation.
 - **`server/src/seed.test.ts`:** at least 100 valid, unique questions; every category has all
   three difficulties; correct options are intact and answer positions are spread out; every
-  current-affairs question is dated.
+  current-affairs question is dated. It also tests the loader on temporary folders: loading all
+  three seed folders, rejecting duplicates across files, reporting bad files, and the fingerprint.
+- **`tests/generators.test.ts`:** regenerating gives exactly the committed files, and every
+  generated answer is rechecked independently against the dataset or by recomputing the maths.
+- **`tests/importers.test.ts`:** CSV parsing (quotes, commas, newlines), Open Trivia DB entity
+  decoding and category mapping, and rejection reasons, using fixtures in `tests/fixtures/`.
+- **`tests/question-bank-db.test.ts`:** Mixed matches spread across all categories, difficulty
+  fallbacks fill a match, and a second start skips reseeding.
 - **`tests/multiplayer.test.ts`:** starts a real server with an in-memory database and drives
   several WebSocket clients through sign-up, joining, quick play, host hand-over, a full
   4-player match with simultaneous / duplicate / late answers, reconnection, scoring checks,
@@ -317,7 +329,7 @@ room status and match phase it receives from the server.
 - **`tests/supabase-rls.test.ts`:** checks the Supabase security policies against a local
   Postgres.
 
-`npm run check` runs lint, typecheck, tests and build in one go.
+`npm run check` runs lint, typecheck, the question bank check, tests and build in one go.
 
 **Learning point:** the integration tests use fast timings and disabled rate limits through
 `ServerConfig`. Making timings configurable is what makes a real-time system testable in
@@ -337,7 +349,10 @@ seconds instead of minutes.
 | `npm run lint` / `npm run typecheck` | Code quality checks |
 | `npm run check` | Lint + typecheck + test + build |
 | `npm run bots -- <ROOMCODE> 3` | Add 3 bot players to a room |
-| `npm run seed:supabase` | Generate the Supabase seed SQL from `seed/questions.json` |
+| `npm run questions:check` | Validate the question bank and show counts |
+| `npm run questions:generate` | Rebuild the generated geography, science and maths questions |
+| `npm run questions:import -- --csv FILE --out seed/imported/NAME.json` | Import a CSV (or `--opentdb FILE`) |
+| `npm run seed:supabase` | Generate the Supabase seed SQL from all seed files |
 
 Environment variables for the server: `PORT` or `MYTHOS_PORT`, `MYTHOS_HOST`,
 `MYTHOS_DATA_DIR`, `MYTHOS_MIN_PLAYERS`, `MYTHOS_CORS_ORIGINS`.
@@ -374,9 +389,11 @@ Environment variables for the server: `PORT` or `MYTHOS_PORT`, `MYTHOS_HOST`,
 
 1. Change `SCORING.maxSpeedBonus` in `shared/rules.ts` to 80, run `npm test`, and read which
    tests fail and why.
-2. Add a few questions to `seed/questions.json` and restart the server. The seed runs on every
-   start and skips questions that already exist (`on conflict (question) do nothing` in
-   `server/src/db.ts`), so the new ones are added without wiping `.data/`.
+2. Add a few questions to a file in `seed/questions/`, run `npm run questions:check`, and restart
+   the server. `seedQuestions` in `server/src/db.ts` compares a fingerprint of the seed files with
+   the one stored in the `seed_state` table, and only reseeds when they differ. It then upserts in
+   batches (`on conflict (question) do update`), so new questions are added and edited ones updated
+   without wiping `.data/`. Watch the server log for `question bank loaded`.
 3. Open the browser DevTools Network tab, filter by WS, and watch the messages during a
    battle. Confirm that the correct answer only appears in the reveal message.
 4. Start a room, add bots with `npm run bots`, then close the host tab mid-battle and watch

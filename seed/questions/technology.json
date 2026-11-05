@@ -1,0 +1,11 @@
+[
+  {"c":"technology","d":"easy","q":"What does CPU stand for?","a":"Central Processing Unit","w":["Central Program Utility","Computer Power Unit","Core Processing Utility"],"e":"The CPU is the Central Processing Unit that executes program instructions.","t":null},
+  {"c":"technology","d":"easy","q":"What does HTML stand for?","a":"HyperText Markup Language","w":["High Transfer Machine Language","HyperText Media Link","Home Tool Markup Language"],"e":"HTML, HyperText Markup Language, structures content on the web.","t":null},
+  {"c":"technology","d":"easy","q":"How many bits make up one byte?","a":"8","w":["4","16","10"],"e":"In modern computing a byte is 8 bits.","t":null},
+  {"c":"technology","d":"medium","q":"Which programming language was created by Guido van Rossum?","a":"Python","w":["Ruby","Java","Perl"],"e":"Guido van Rossum released Python in 1991. Ruby is by Yukihiro Matsumoto, Java by James Gosling, Perl by Larry Wall.","t":null},
+  {"c":"technology","d":"medium","q":"Which data structure follows the Last-In, First-Out (LIFO) principle?","a":"Stack","w":["Queue","Linked list","Hash table"],"e":"A stack removes the most recently added item first. A queue is First-In, First-Out.","t":null},
+  {"c":"technology","d":"medium","q":"What is the default TCP port for HTTPS?","a":"443","w":["80","21","8080"],"e":"HTTPS uses port 443 by default; plain HTTP uses 80 and FTP uses 21.","t":null},
+  {"c":"technology","d":"hard","q":"What is the worst-case time complexity of binary search on a sorted array of n elements?","a":"O(log n)","w":["O(n)","O(n log n)","O(1)"],"e":"Binary search halves the search space every step, taking O(log n) comparisons.","t":null},
+  {"c":"technology","d":"hard","q":"Who wrote what is widely regarded as the first published algorithm intended for Charles Babbage's Analytical Engine?","a":"Ada Lovelace","w":["Grace Hopper","Alan Turing","Charles Babbage"],"e":"In 1843 Ada Lovelace published notes including an algorithm to compute Bernoulli numbers on the Analytical Engine.","t":null},
+  {"c":"technology","d":"hard","q":"In networking, what does DNS primarily do?","a":"Translates domain names into IP addresses","w":["Encrypts web traffic","Assigns MAC addresses to devices","Compresses network packets"],"e":"The Domain Name System resolves human-readable names like example.com to IP addresses.","t":null}
+]

@@ -1,0 +1,53 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Science: Computers",
+      "question": "What does the &quot;S&quot; in &quot;HTTPS&quot; stand for?",
+      "correct_answer": "Secure",
+      "incorrect_answers": ["Simple", "Server", "Standard"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "easy",
+      "category": "General Knowledge",
+      "question": "The Great Wall of China is visible from the Moon with the naked eye.",
+      "correct_answer": "False",
+      "incorrect_answers": ["True"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Art",
+      "question": "Who painted &quot;The Persistence of Memory&quot;?",
+      "correct_answer": "Salvador Dal&iacute;",
+      "incorrect_answers": ["Ren&eacute; Magritte", "Max Ernst", "Joan Mir&oacute;"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Entertainment: Japanese Anime &amp; Manga",
+      "question": "In &quot;Pok&eacute;mon&quot;, which type is Pikachu?",
+      "correct_answer": "Electric",
+      "incorrect_answers": ["Fire", "Water", "Grass"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Politics",
+      "question": "How many permanent members does the UN Security Council have?",
+      "correct_answer": "5",
+      "incorrect_answers": ["7", "10", "15"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Geography",
+      "question": "Which river is the longest in Western Europe &unknownentity; today?",
+      "correct_answer": "Rhine",
+      "incorrect_answers": ["Loire", "Seine", "Elbe"]
+    }
+  ]
+}

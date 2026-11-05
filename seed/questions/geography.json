@@ -1,0 +1,10 @@
+[
+  {"c":"geography","d":"easy","q":"What is the capital city of Australia?","a":"Canberra","w":["Sydney","Melbourne","Perth"],"e":"Canberra was purpose-built as the capital as a compromise between Sydney and Melbourne.","t":null},
+  {"c":"geography","d":"easy","q":"Which is the largest ocean on Earth?","a":"Pacific Ocean","w":["Atlantic Ocean","Indian Ocean","Arctic Ocean"],"e":"The Pacific covers roughly a third of Earth's surface.","t":null},
+  {"c":"geography","d":"medium","q":"Which river flows through Cairo?","a":"Nile","w":["Euphrates","Tigris","Congo"],"e":"Cairo lies on the banks of the Nile, just south of the Nile Delta.","t":null},
+  {"c":"geography","d":"medium","q":"Mount Everest lies on the border between Nepal and which country?","a":"China","w":["India","Bhutan","Pakistan"],"e":"Everest's summit sits on the border of Nepal and the Tibet Autonomous Region of China.","t":null},
+  {"c":"geography","d":"medium","q":"What is the largest hot desert in the world?","a":"Sahara","w":["Arabian Desert","Gobi","Kalahari"],"e":"The Sahara is the largest hot desert. Antarctica is the largest desert overall (a cold desert).","t":null},
+  {"c":"geography","d":"medium","q":"What is the smallest country in the world by area?","a":"Vatican City","w":["Monaco","San Marino","Liechtenstein"],"e":"Vatican City covers about 0.44 km², making it the smallest sovereign state.","t":null},
+  {"c":"geography","d":"hard","q":"Lake Baikal, the world's deepest lake, is located in which country?","a":"Russia","w":["Mongolia","Kazakhstan","China"],"e":"Lake Baikal in Siberia, Russia, is over 1,600 m deep.","t":null},
+  {"c":"geography","d":"hard","q":"Which strait separates Asia from North America?","a":"Bering Strait","w":["Strait of Malacca","Strait of Gibraltar","Bosporus"],"e":"The Bering Strait lies between Russia's Chukotka Peninsula and Alaska.","t":null}
+]

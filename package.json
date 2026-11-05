@@ -18,7 +18,10 @@
     "test:watch": "vitest",
     "seed:supabase": "tsx scripts/build-supabase-seed.ts",
     "bots": "tsx scripts/bot-players.ts",
-    "check": "npm run lint && npm run typecheck && npm run test && npm run build"
+    "questions:check": "tsx scripts/questions-check.ts",
+    "questions:generate": "tsx scripts/generate-questions.ts",
+    "questions:import": "tsx scripts/import-questions.ts",
+    "check": "npm run lint && npm run typecheck && npm run questions:check && npm run test && npm run build"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.2.12",

@@ -1,0 +1,10 @@
+[
+  {"c":"literature","d":"easy","q":"Who wrote the play \"Romeo and Juliet\"?","a":"William Shakespeare","w":["Christopher Marlowe","Charles Dickens","Geoffrey Chaucer"],"e":"Shakespeare wrote Romeo and Juliet in the mid-1590s.","t":null},
+  {"c":"literature","d":"easy","q":"Who wrote the \"Harry Potter\" book series?","a":"J. K. Rowling","w":["J. R. R. Tolkien","Roald Dahl","C. S. Lewis"],"e":"J. K. Rowling wrote the seven Harry Potter novels (1997–2007).","t":null},
+  {"c":"literature","d":"medium","q":"Who received the 1913 Nobel Prize in Literature, notably for the English \"Gitanjali\"?","a":"Rabindranath Tagore","w":["Sarojini Naidu","Bankim Chandra Chatterjee","Premchand"],"e":"Tagore was the first non-European to win the Nobel Prize in Literature.","t":null},
+  {"c":"literature","d":"medium","q":"Which novel opens with the line \"Call me Ishmael.\"?","a":"Moby-Dick","w":["Treasure Island","The Old Man and the Sea","Robinson Crusoe"],"e":"Herman Melville's Moby-Dick (1851) begins with 'Call me Ishmael.'","t":null},
+  {"c":"literature","d":"medium","q":"Who wrote the dystopian novel \"Nineteen Eighty-Four\"?","a":"George Orwell","w":["Aldous Huxley","Ray Bradbury","H. G. Wells"],"e":"George Orwell published Nineteen Eighty-Four in 1949. Huxley wrote Brave New World.","t":null},
+  {"c":"literature","d":"hard","q":"Who wrote \"One Hundred Years of Solitude\"?","a":"Gabriel García Márquez","w":["Jorge Luis Borges","Mario Vargas Llosa","Isabel Allende"],"e":"García Márquez published the novel in 1967; it is a landmark of magical realism.","t":null},
+  {"c":"literature","d":"hard","q":"In which language did Kalidasa compose \"Abhijnanashakuntalam\"?","a":"Sanskrit","w":["Pali","Tamil","Persian"],"e":"Kalidasa wrote the play in Sanskrit (with some characters speaking Prakrit, as was dramatic convention).","t":null},
+  {"c":"literature","d":"hard","q":"Who wrote the epic poem \"Paradise Lost\"?","a":"John Milton","w":["John Donne","Edmund Spenser","William Blake"],"e":"John Milton published Paradise Lost in 1667.","t":null}
+]

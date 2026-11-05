@@ -6,7 +6,7 @@
  */
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { PGlite } from '@electric-sql/pglite';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 
 const STUB = `
   create role anon nologin;
@@ -42,7 +42,9 @@ async function as<T>(user: string | null, sql: string, params: unknown[] = []): 
 beforeAll(async () => {
   db = new PGlite();
   await db.exec(STUB);
-  await db.exec(readFileSync('supabase/migrations/20261105000000_mythos_init.sql', 'utf8'));
+  for (const file of readdirSync('supabase/migrations').filter((f) => f.endsWith('.sql')).sort()) {
+    await db.exec(readFileSync(`supabase/migrations/${file}`, 'utf8'));
+  }
   await db.exec(readFileSync('supabase/seed.sql', 'utf8'));
   await db.query(`insert into auth.users (id, raw_user_meta_data) values ($1, '{"username":"Alice"}'), ($2, '{"username":"Alice"}')`, [
     ALICE,

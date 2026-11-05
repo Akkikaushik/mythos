@@ -59,6 +59,16 @@ create table if not exists questions (
   unique (question)
 );
 create index if not exists questions_pick_idx on questions (category, difficulty) where active;
+-- attribution for imported questions; added after the first release, so existing databases need the alter
+alter table questions add column if not exists source text;
+
+-- fingerprint of the seed files last loaded, so unchanged files are not re-inserted on every start
+create table if not exists seed_state (
+  id             smallint primary key default 1 check (id = 1),
+  fingerprint    text not null,
+  question_count integer not null,
+  seeded_at      timestamptz not null default now()
+);
 
 create table if not exists matches (
   id            uuid primary key default gen_random_uuid(),

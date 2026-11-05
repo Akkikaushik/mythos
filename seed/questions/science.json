@@ -1,0 +1,10 @@
+[
+  {"c":"science","d":"easy","q":"Which gas do plants mainly absorb from the air for photosynthesis?","a":"Carbon dioxide","w":["Oxygen","Nitrogen","Hydrogen"],"e":"Plants take in carbon dioxide and, using light energy, produce glucose and release oxygen.","t":null},
+  {"c":"science","d":"easy","q":"What is the chemical symbol for gold?","a":"Au","w":["Ag","Go","Gd"],"e":"Au comes from the Latin 'aurum'. Ag is silver and Gd is gadolinium.","t":null},
+  {"c":"science","d":"easy","q":"Which planet is known as the Red Planet?","a":"Mars","w":["Venus","Jupiter","Mercury"],"e":"Iron oxide on its surface gives Mars its reddish appearance.","t":null},
+  {"c":"science","d":"medium","q":"In eukaryotic cells, which structure contains most of the cell's genetic material?","a":"Nucleus","w":["Ribosome","Golgi apparatus","Cell membrane"],"e":"The nucleus houses chromosomal DNA. Mitochondria hold a small amount of their own DNA.","t":null},
+  {"c":"science","d":"medium","q":"What is the SI unit of electrical resistance?","a":"Ohm","w":["Volt","Ampere","Watt"],"e":"Resistance is measured in ohms (Ω); volts measure potential difference, amperes current, watts power.","t":null},
+  {"c":"science","d":"medium","q":"What is the approximate speed of light in a vacuum?","a":"About 300,000 km per second","w":["About 30,000 km per second","About 3,000,000 km per second","About 150,000 km per second"],"e":"Light travels at exactly 299,792,458 m/s in a vacuum, roughly 300,000 km/s.","t":null},
+  {"c":"science","d":"hard","q":"Which element has the highest electronegativity on the Pauling scale?","a":"Fluorine","w":["Oxygen","Chlorine","Nitrogen"],"e":"Fluorine has a Pauling electronegativity of about 3.98, the highest of all elements.","t":null},
+  {"c":"science","d":"hard","q":"Absolute zero (0 kelvin) is equal to which temperature in degrees Celsius?","a":"−273.15 °C","w":["−459.67 °C","−100 °C","−373.15 °C"],"e":"0 K is defined as −273.15 °C. −459.67 is the Fahrenheit value.","t":null}
+]

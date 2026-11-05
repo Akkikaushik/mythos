@@ -1,0 +1,10 @@
+[
+  {"c":"general_knowledge","d":"easy","q":"How many days are there in a leap year?","a":"366","w":["365","364","367"],"e":"A leap year adds 29 February, giving 366 days.","t":null},
+  {"c":"general_knowledge","d":"easy","q":"Which colour is produced by mixing blue and yellow paint?","a":"Green","w":["Purple","Orange","Brown"],"e":"In subtractive (paint) colour mixing, blue and yellow make green.","t":null},
+  {"c":"general_knowledge","d":"easy","q":"What is the official currency of Japan?","a":"Yen","w":["Won","Yuan","Ringgit"],"e":"Japan uses the yen. The won is Korean, the yuan Chinese and the ringgit Malaysian.","t":null},
+  {"c":"general_knowledge","d":"medium","q":"Which organ in the human body produces the hormone insulin?","a":"Pancreas","w":["Liver","Kidney","Spleen"],"e":"Beta cells in the pancreatic islets of Langerhans produce insulin.","t":null},
+  {"c":"general_knowledge","d":"medium","q":"Which naturally occurring material is the hardest on the Mohs scale?","a":"Diamond","w":["Quartz","Topaz","Corundum"],"e":"Diamond ranks 10 on the Mohs hardness scale, the maximum.","t":null},
+  {"c":"general_knowledge","d":"medium","q":"In which city is the ancient Colosseum located?","a":"Rome","w":["Athens","Naples","Istanbul"],"e":"The Flavian Amphitheatre, known as the Colosseum, stands in the centre of Rome.","t":null},
+  {"c":"general_knowledge","d":"medium","q":"How many keys does a standard modern piano have?","a":"88","w":["76","72","96"],"e":"A standard modern piano has 88 keys: 52 white and 36 black.","t":null},
+  {"c":"general_knowledge","d":"hard","q":"How many bones does a typical adult human skeleton have?","a":"206","w":["208","196","212"],"e":"The typical adult skeleton has 206 bones; infants have more, which fuse during growth.","t":null}
+]

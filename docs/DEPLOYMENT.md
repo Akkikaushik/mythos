@@ -81,7 +81,8 @@ that URL. Vercel is only needed if you want the frontend on Vercel's CDN.
 - `supabase/migrations/20261105000000_mythos_init.sql` contains the tables (`profiles`, `rooms`, `room_players`, `questions`,
   `matches`, `match_questions`, `answers`, `player_stats`, `leaderboard_entries`), keys, unique constraints,
   indexes, the new-user trigger, **Row Level Security** and the Realtime publication.
-- `supabase/seed.sql` contains the 109 seed questions (regenerate with `npm run seed:supabase`).
+- `supabase/seed.sql` contains the whole question bank, currently 1,265 questions (regenerate with `npm run seed:supabase`).
+- Apply every file in `supabase/migrations/` in name order; `20261106000000_question_source.sql` adds the `questions.source` attribution column.
 - `tests/supabase-rls.test.ts` applies the migration and seed to Postgres with a stub `auth` schema and verifies that:
   - questions and answer keys are unreadable by clients
   - private rooms are visible only to members

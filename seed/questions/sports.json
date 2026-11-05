@@ -1,0 +1,10 @@
+[
+  {"c":"sports","d":"easy","q":"How many players from one team are on the field at a time in association football (soccer)?","a":"11","w":["10","9","12"],"e":"Each side fields 11 players, including the goalkeeper.","t":null},
+  {"c":"sports","d":"easy","q":"In which sport is a score of zero called \"love\"?","a":"Tennis","w":["Badminton","Golf","Squash"],"e":"Tennis uses 'love' for zero, as in 'fifteen-love'.","t":null},
+  {"c":"sports","d":"easy","q":"How many interlocking rings appear on the Olympic flag?","a":"5","w":["4","6","7"],"e":"The five rings represent the union of the five inhabited continents as conceived in the Olympic movement.","t":null},
+  {"c":"sports","d":"medium","q":"Which country won the first FIFA World Cup in 1930?","a":"Uruguay","w":["Brazil","Argentina","Italy"],"e":"Hosts Uruguay beat Argentina 4–2 in the 1930 final in Montevideo.","t":null},
+  {"c":"sports","d":"medium","q":"How many legal deliveries make up a standard over in cricket?","a":"6","w":["5","8","4"],"e":"A standard over consists of six legal deliveries.","t":null},
+  {"c":"sports","d":"medium","q":"In which city were the first modern Olympic Games held in 1896?","a":"Athens","w":["Paris","London","Rome"],"e":"The 1896 Games in Athens were the first of the modern Olympic era.","t":null},
+  {"c":"sports","d":"hard","q":"Who was the first batter to score a double century in a men's One Day International?","a":"Sachin Tendulkar","w":["Virender Sehwag","Rohit Sharma","Chris Gayle"],"e":"Tendulkar scored 200* against South Africa in Gwalior in February 2010. Belinda Clark had made the first women's ODI 200 in 1997.","t":null},
+  {"c":"sports","d":"hard","q":"What is the official distance of a marathon?","a":"42.195 km","w":["40 km","41.195 km","45 km"],"e":"The marathon distance was standardised at 42.195 km (26 miles 385 yards) in 1921.","t":null}
+]

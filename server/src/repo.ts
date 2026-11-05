@@ -1,6 +1,6 @@
 import type { Db, Queryable } from './db';
 import { conflict, notFound } from './errors';
-import { levelForXp, MIXED_CATEGORY, type AvatarId, type GameSettings } from '../../shared/rules';
+import { CATEGORY_IDS, levelForXp, MIXED_CATEGORY, type AvatarId, type GameSettings } from '../../shared/rules';
 import type { LeaderboardPeriod, LeaderboardRow, MatchHistoryItem, PlayerStats, Profile } from '../../shared/protocol';
 
 interface ProfileRow {
@@ -205,26 +205,64 @@ export interface PickedQuestion {
   explanation: string;
 }
 
+function shuffled<T>(items: readonly T[]): T[] {
+  const out = [...items];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
+/** Splits `count` questions as evenly as possible over the categories, in random order. */
+export function categoryQuotas(categories: readonly string[], count: number): Map<string, number> {
+  const order = shuffled(categories);
+  const quotas = new Map<string, number>();
+  order.forEach((c, i) => {
+    const n = Math.floor(count / order.length) + (i < count % order.length ? 1 : 0);
+    if (n > 0) quotas.set(c, n);
+  });
+  return quotas;
+}
+
+const PICK_COLUMNS = 'id, category, difficulty, question, options, correct_index, explanation';
+
 /**
- * Random selection honouring the host's filters. If the filtered pool is too
- * small it tops up first with other difficulties of the same categories, then
- * with any category, so a match always has the requested length.
+ * Random selection honouring the host's filters, spread evenly across the chosen categories
+ * (all categories for Mixed) so one large category cannot crowd out the rest. If a category
+ * is too small, the match is topped up with other questions of the same categories and
+ * difficulty, then any difficulty, then any category, so it always has the requested length.
  */
 export async function pickQuestions(db: Queryable, settings: GameSettings): Promise<PickedQuestion[]> {
   const mixed = settings.categories.includes(MIXED_CATEGORY.id);
   const cats = mixed ? null : settings.categories;
   const diff = settings.difficulty === 'mixed' ? null : settings.difficulty;
   const picked: PickedQuestion[] = [];
-  const tiers: [string[] | null, string | null][] = [
+
+  const pool = cats ?? CATEGORY_IDS;
+  const quotas = categoryQuotas(pool, settings.questionCount);
+  const balanced = await db.query<PickedQuestion>(
+    `with quota as (select * from unnest($1::text[], $2::int[]) as q(category, n))
+     select ${PICK_COLUMNS} from (
+       select qs.*, row_number() over (partition by qs.category order by random()) as rn
+         from questions qs join quota using (category)
+        where qs.active and ($3::text is null or qs.difficulty = $3)
+     ) r join quota using (category)
+     where r.rn <= quota.n`,
+    [[...quotas.keys()], [...quotas.values()], diff],
+  );
+  picked.push(...balanced.rows);
+
+  const fallbacks: [readonly string[] | null, string | null][] = [
     [cats, diff],
     [cats, null],
     [null, null],
   ];
-  for (const [c, d] of tiers) {
+  for (const [c, d] of fallbacks) {
     const need = settings.questionCount - picked.length;
     if (need <= 0) break;
     const res = await db.query<PickedQuestion>(
-      `select id, category, difficulty, question, options, correct_index, explanation
+      `select ${PICK_COLUMNS}
          from questions
         where active
           and ($1::text[] is null or category = any($1::text[]))
@@ -235,7 +273,7 @@ export async function pickQuestions(db: Queryable, settings: GameSettings): Prom
     );
     picked.push(...res.rows);
   }
-  return picked;
+  return shuffled(picked).slice(0, settings.questionCount);
 }
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;

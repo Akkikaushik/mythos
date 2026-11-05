@@ -44,7 +44,7 @@ interface Ctx {
 }
 
 export async function startServer(cfg: ServerConfig): Promise<RunningServer> {
-  const db = await openDatabase(cfg.dataDir);
+  const db = await openDatabase(cfg.dataDir, cfg.log ? (msg) => console.log(`[mythos] ${msg}`) : undefined);
   const signer = new TokenSigner(loadSessionSecret(cfg.dataDir));
   const engine = new GameEngine(db, cfg);
   const authLimiter = new RateLimiter(10, 10 / 60);
